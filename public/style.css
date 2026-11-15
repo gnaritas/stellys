@@ -1,0 +1,184 @@
+/* Stelly's Sandwiches & Such — chalkboard-deli theme, hand-rolled, no frameworks */
+:root{
+  --slate:#20262b; --slate2:#2b333a; --slate3:#333d45;
+  --chalk:#f4efe2; --chalkdim:#c9c2b0;
+  --paper:#f8f3e7; --paper2:#efe6d2; --paper3:#e6dbbf;
+  --ink:#27221b; --ink2:#5b5344;
+  --mustard:#d99f2c; --paprika:#b0392a; --rye:#8a5f38; --pickle:#5d7a5c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font:17px/1.65 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  -webkit-font-smoothing:antialiased;
+}
+main p{margin:.85em 0}
+h1,h2,h3,.cond{
+  font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  text-transform:uppercase;line-height:1.06;letter-spacing:.015em;
+}
+h1{font-size:clamp(2.1rem,5.4vw,3.4rem);font-weight:700}
+h2{font-size:clamp(1.5rem,3.6vw,2.15rem);font-weight:700}
+h3{font-size:1.22rem;font-weight:700}
+a{color:var(--paprika)}
+a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--pickle);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:50;background:var(--slate);color:var(--chalk);padding:10px 16px;border-radius:4px}
+
+/* top bar */
+.top{background:var(--slate);border-bottom:4px solid var(--mustard);position:relative}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 26px;padding-top:14px;padding-bottom:14px}
+.brand{color:var(--chalk);text-decoration:none;font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;font-weight:700;font-size:1.7rem;letter-spacing:.03em;line-height:1}
+.brand small{display:block;font-size:.62rem;font-weight:500;letter-spacing:.24em;color:var(--mustard);margin-top:4px}
+.top nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline}
+.top nav a{color:var(--chalkdim);text-decoration:none;font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;font-size:.95rem;letter-spacing:.08em;padding:6px 2px;border-bottom:2px solid transparent}
+.top nav a:hover{color:var(--chalk);border-bottom-color:var(--mustard)}
+.top a.orderbtn{background:var(--paprika);color:var(--chalk);border-radius:6px;padding:9px 16px;border-bottom:none;font-weight:700}
+.top a.orderbtn:hover{background:#9a2f23;color:#fff}
+
+/* buttons */
+.btn{
+  display:inline-block;background:var(--paprika);color:#fff;text-decoration:none;
+  font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  text-transform:uppercase;letter-spacing:.07em;font-size:.98rem;font-weight:700;
+  border-radius:6px;padding:12px 20px;border:2px solid var(--paprika);
+}
+.btn:hover{background:#9a2f23;color:#fff}
+.btn.ghost{background:transparent;color:var(--slate);border-color:var(--slate)}
+.btn.ghost:hover{background:var(--slate);color:var(--chalk)}
+.dark .btn.ghost{color:var(--chalk);border-color:var(--chalkdim)}
+.dark .btn.ghost:hover{background:var(--chalk);color:var(--slate);border-color:var(--chalk)}
+
+/* hero — chalkboard band */
+.hero{
+  background:
+    radial-gradient(rgba(255,255,255,.05) 1px, transparent 1.6px),
+    linear-gradient(160deg,var(--slate) 0%, var(--slate2) 55%, var(--slate) 100%);
+  background-size:26px 26px, auto;
+  color:var(--chalk);padding:58px 0 64px;border-bottom:4px solid var(--rye);
+}
+.herogrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:40px;align-items:center}
+.hero .kicker{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.92rem;color:var(--mustard);margin-bottom:14px}
+.hero h1 em{font-style:normal;color:var(--mustard)}
+.hero .sub{color:var(--chalkdim);max-width:56ch;font-size:1.06rem}
+.hero .cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+/* chalk menu board card */
+.boardcard{
+  background:var(--slate2);border:2px dashed var(--chalkdim);border-radius:12px;
+  padding:26px 28px;box-shadow:0 0 0 6px rgba(244,239,226,.05);
+}
+.boardcard .bk{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:.85rem;color:var(--mustard);border-bottom:1px dashed var(--chalkdim);padding-bottom:10px;margin-bottom:14px}
+.boardcard .row{display:flex;justify-content:space-between;gap:16px;font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:1.05rem;color:var(--chalk);padding:7px 0;border-bottom:1px solid rgba(244,239,226,.12)}
+.boardcard .row span:last-child{color:var(--chalkdim);text-align:right}
+.boardcard .bnote{margin-top:12px;font-size:.95rem;color:var(--chalkdim);font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;text-transform:none;letter-spacing:0}
+
+/* mustard band */
+.band{background:var(--mustard);border-bottom:4px solid var(--slate);color:var(--slate)}
+.band .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;padding-top:18px;padding-bottom:18px}
+.band .btext{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;font-weight:700;font-size:1.06rem}
+.band .btn{background:var(--slate);color:var(--chalk);border-color:var(--slate)}
+.band .btn:hover{background:var(--chalk);color:var(--slate)}
+
+/* sections */
+section.blk{padding:56px 0}
+section.blk.alt{background:var(--paper2);border-top:1px solid var(--paper3);border-bottom:1px solid var(--paper3)}
+.lead{max-width:64ch}
+.kicker{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.85rem;color:var(--rye);margin-bottom:10px}
+
+/* menu cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:26px}
+.card{background:var(--paper);border:2px dashed var(--rye);border-radius:12px;padding:22px 22px 18px}
+.card h3{color:var(--slate);margin-bottom:8px}
+.card .price{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--paprika);font-size:.95rem;font-weight:700}
+.card p{font-size:1rem;margin:.5em 0}
+.card a{text-decoration:none;border-bottom:1px solid var(--paprika)}
+
+/* quote — dark card */
+.quote{
+  background:var(--slate);color:var(--chalk);border-radius:12px;padding:30px 32px;
+  border-left:6px solid var(--mustard);
+}
+.quote p{font-size:1.12rem;line-height:1.55}
+.quote .who{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.85rem;color:var(--mustard);margin-top:14px}
+
+/* two-column layouts */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:26px}
+.wherecard{background:var(--paper);border:1px solid var(--paper3);border-left:6px solid var(--paprika);border-radius:10px;padding:22px 24px}
+.wherecard h3{color:var(--slate);margin-bottom:10px}
+.hours{list-style:none}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid var(--paper3);font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:1rem}
+.hours li b{font-weight:700;color:var(--slate)}
+.hours li span{color:var(--ink2)}
+.hours li.closed span{color:var(--paprika)}
+
+/* map — never let the auto-margin/min-content collapse; explicit width */
+.mapwrap{width:100%;border:2px dashed var(--rye);border-radius:12px;overflow:hidden;background:var(--paper3);margin-top:22px}
+.mapwrap iframe{width:100%;min-height:340px;display:block;border:0}
+
+/* order band */
+.orderband{background:linear-gradient(160deg,var(--slate) 0%, var(--slate2) 60%, var(--slate) 100%);color:var(--chalk);border-top:4px solid var(--mustard);border-bottom:4px solid var(--rye);padding:52px 0}
+.orderband h2{color:var(--chalk)}
+.orderband p{color:var(--chalkdim);max-width:60ch}
+.orderband .cta{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px}
+
+/* FAQ */
+dl.faq{margin-top:22px;border-top:1px solid var(--paper3)}
+dl.faq dt{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:1.06rem;color:var(--slate);padding:16px 0 6px;border-bottom:1px dashed var(--paper3)}
+dl.faq dd{padding:8px 0 16px;border-bottom:1px solid var(--paper3);color:var(--ink2)}
+
+/* detail page hero */
+.dhero{background:linear-gradient(160deg,var(--slate) 0%,var(--slate2) 100%);color:var(--chalk);padding:48px 0 52px;border-bottom:4px solid var(--rye)}
+.dhero .kicker{color:var(--mustard)}
+.dhero .sub{color:var(--chalkdim);max-width:60ch}
+.dhero .cta{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px}
+
+/* spec list on detail pages */
+.specs{margin-top:20px;list-style:none}
+.specs li{padding:10px 0 10px 26px;position:relative;border-bottom:1px solid var(--paper3)}
+.specs li::before{content:"\25B8";position:absolute;left:6px;color:var(--paprika)}
+
+/* forms */
+.cform{display:grid;gap:6px;max-width:560px}
+.cform label{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--slate);margin-top:12px}
+.cform input,.cform textarea{
+  font:inherit;font-size:1rem;padding:11px 13px;border:2px solid var(--paper3);border-radius:8px;
+  background:#fffef9;color:var(--ink);width:100%;
+}
+.cform input:focus,.cform textarea:focus{outline:3px solid var(--pickle);outline-offset:1px;border-color:var(--slate3)}
+.cform textarea{min-height:150px;resize:vertical}
+.cform .btn{margin-top:16px;justify-self:start}
+.fine{font-size:.92rem;color:var(--ink2)}
+
+/* utility pages */
+.utility{padding:70px 0 80px}
+.utility h1{font-size:clamp(1.8rem,4.4vw,2.6rem)}
+.utility p{max-width:60ch}
+
+/* footer */
+footer{background:var(--slate);color:var(--chalkdim);border-top:4px solid var(--mustard);padding:38px 0 30px}
+.fgrid{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-start}
+.fbrand{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.06em;font-weight:700;font-size:1.2rem;color:var(--chalk)}
+.fnap{font-size:.98rem;line-height:1.55}
+.flinks{margin-left:auto;display:flex;flex-wrap:wrap;gap:10px 18px}
+.flinks a{color:var(--chalkdim);text-decoration:none;text-transform:uppercase;font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;font-size:.9rem}
+.flinks a:hover{color:var(--mustard)}
+.footline{margin-top:22px;padding-top:14px;border-top:1px dashed rgba(244,239,226,.2);font-size:.9rem}
+
+/* responsive */
+@media (max-width:960px){
+  .herogrid{grid-template-columns:1fr;gap:30px}
+  .cols{grid-template-columns:1fr;gap:26px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .top nav{margin-left:0}
+  section.blk{padding:42px 0}
+  .hero{padding:42px 0 48px}
+  .boardcard{padding:20px 20px 16px}
+  .boardcard .row{font-size:.98rem;flex-wrap:wrap}
+  .mapwrap iframe{min-height:280px}
+  .flinks{margin-left:0}
+}

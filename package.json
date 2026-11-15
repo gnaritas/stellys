@@ -1,0 +1,8 @@
+{
+  "name": "stellys",
+  "version": "1.0.0",
+  "description": "Stelly's Sandwiches & Such — house-made pastrami and signature sandwiches at 1001 Logan St, Louisville KY (static site + node form relay)",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
