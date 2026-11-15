@@ -64,43 +64,55 @@ d.text((72, 74), "LOGAN STREET MARKET  ·  SHELBY PARK", font=cond(24), fill=MUS
 
 name_f = chalk(118)
 d.text((66, 122), "Stelly's", font=name_f, fill=CHALK)
-# chalk shadow stroke under the name
-d.line([(72, 262), (480, 260)], fill=CHALK + (90,), width=4)
 
 d.text((72, 286), "Sandwiches & Such", font=chalk(52), fill=CHALK)
 
 tag_f = serif(30)
-d.text((72, 372), "House-made pastrami. Fun sandwiches.", font=tag_f, fill=CHALKDIM)
-d.text((72, 412), "Positive vibes.", font=tag_f, fill=CHALKDIM)
+TAGC = (226, 220, 203)
+d.text((72, 372), "House-made pastrami. Fun sandwiches.", font=tag_f, fill=TAGC)
+d.text((72, 412), "Positive vibes.", font=tag_f, fill=TAGC)
 
 # hours/price board rows (chalk dashed separators)
 row_f = cond(27); rowv_f = chalk(27)
 rows = [("TUE–SUN", "11:00 a.m. – 3:30 p.m."),
         ("MONDAY", "Closed"),
         ("SANDWICHES", "$14 – $16")]
-y0 = 482
-for lab, val in rows:
+y0 = 466
+for idx, (lab, val) in enumerate(rows):
     d.text((72, y0), lab, font=row_f, fill=MUSTARD)
     d.text((320, y0 - 3), val, font=rowv_f, fill=CHALK)
-    d.line([(72, y0 + 40), (700, y0 + 40)], fill=(244, 239, 226, 46), width=1)
-    y0 += 48
+    if idx < len(rows) - 1:
+        d.line([(72, y0 + 36), (700, y0 + 36)], fill=(244, 239, 226, 46), width=1)
+    y0 += 42
 
-# chalk pastrami sandwich sketch, right side
-cx, cy = 940, 300
+# chalk pastrami sandwich sketch, right side — aligned slices, contained folds
+cx, cy = 950, 285
+SLOPE = -0.09  # consistent tilt for every element
+def yslant(x, base): return base + SLOPE * (x - cx)
 # top slice
-d.polygon([(cx-180, cy-95), (cx+180, cy-135), (cx+195, cy-70), (cx-165, cy-35)], outline=CHALK + (200,), width=4)
-# meat folds
-for i, off in enumerate([-60, -10, 40]):
-    pts = [(cx-150+off*0.4, cy-15+i*16), (cx-30+off, cy-38+i*16), (cx+90+off*0.9, cy-2+i*16), (cx+160+off, cy+10+i*16)]
-    d.polygon(pts, outline=PAPRIKA + (230,), width=4)
+d.polygon([(cx-165, yslant(cx-165, cy-118)), (cx+165, yslant(cx+165, cy-118)),
+           (cx+165, yslant(cx+165, cy-72)),  (cx-165, yslant(cx-165, cy-72))],
+          outline=CHALK + (210,), width=4)
+# meat folds: three gentle stacked waves, strictly inside the sandwich width
+for i, base in enumerate([cy-46, cy-18, cy+10]):
+    pts = []
+    for x in range(-140, 141, 28):
+        pts.append((cx + x, yslant(cx + x, base) + (7 if (x // 28) % 2 else -7)))
+    d.line(pts, fill=PAPRIKA + (235,), width=4)
 # bottom slice
-d.polygon([(cx-165, cy+75), (cx+190, cy+45), (cx+175, cy+120), (cx-150, cy+145)], outline=CHALK + (200,), width=4)
-# chalk underline flourish
-d.arc([(cx-150, cy+160), (cx+190, cy+230)], 20, 160, fill=CHALK + (120,), width=3)
+d.polygon([(cx-165, yslant(cx-165, cy+34)), (cx+165, yslant(cx+165, cy+34)),
+           (cx+165, yslant(cx+165, cy+80)),  (cx-165, yslant(cx-165, cy+80))],
+          outline=CHALK + (210,), width=4)
 
-# mustard corner stamp
-d.rectangle([860, 500, 1130, 566], outline=MUSTARD, width=3)
-d.text((876, 514), "ORDER AHEAD · PICK UP", font=cond(26), fill=MUSTARD)
+# mustard corner stamp — box sized to the measured text
+cta_f = cond(24)
+cta_txt = "ORDER AHEAD · PICK UP"
+tb = d.textbbox((0, 0), cta_txt, font=cta_f)
+tw, th = tb[2] - tb[0], tb[3] - tb[1]
+bx2, by2 = 1150, 556
+bx1, by1 = bx2 - tw - 40, by2 - th - 26
+d.rectangle([bx1, by1, bx2, by2], outline=MUSTARD, width=3)
+d.text((bx1 + 20 - tb[0], by1 + 13 - tb[1]), cta_txt, font=cta_f, fill=MUSTARD)
 
 img.save(OUT, "PNG", optimize=True)
 print("wrote", OUT, os.path.getsize(OUT), "bytes")
